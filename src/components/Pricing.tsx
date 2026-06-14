@@ -49,7 +49,7 @@ export default function Pricing({ onOpenForm }: { onOpenForm: () => void }) {
             viewport={{ once: true }}
             className="text-4xl md:text-5xl lg:text-6xl font-display font-medium mb-8 text-black"
           >
-            Inversión
+            Precios
           </motion.h2>
           
           <motion.div 
@@ -124,7 +124,7 @@ export default function Pricing({ onOpenForm }: { onOpenForm: () => void }) {
             onClick={onOpenForm}
             className="px-12 py-5 bg-black text-white rounded-full font-medium text-lg hover:bg-neutral-800 transition-all shadow-xl shadow-black/10 hover:-translate-y-1 active:translate-y-0 uppercase tracking-widest"
           >
-            Pedir Precio Personalizado
+            Empezar tu proyecto
           </button>
           <p className="mt-6 text-sm text-neutral-400 font-light">
             Revisiones extra: 40 € – 50 € por ronda adicional.

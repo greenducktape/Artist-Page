@@ -25,9 +25,9 @@ function App() {
     <div className="min-h-screen bg-white font-sans selection:bg-neutral-200 selection:text-black">
       <Hero />
       <About />
+      <Portfolio />
       <Services />
       <Pricing onOpenForm={() => setIsQuoteFormOpen(true)} />
-      <Portfolio />
       <Process />
       <Contact />
       <Footer />
