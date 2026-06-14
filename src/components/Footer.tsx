@@ -1,19 +1,26 @@
 export default function Footer() {
   return (
-    <footer className="bg-white py-12 px-6 border-t border-neutral-100">
-      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-        <div className="font-display font-medium text-2xl tracking-tighter text-black">
+    <footer className="bg-white py-14 px-6 border-t border-neutral-100">
+      <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 md:gap-6">
+        <div className="font-display font-medium text-3xl tracking-tighter text-black">
           Poloteme
         </div>
         
-        <div className="flex gap-6 text-sm text-neutral-500 font-medium tracking-wide uppercase">
+        <div className="flex gap-8 text-sm text-neutral-500 font-medium tracking-wider uppercase">
           <a href="https://www.instagram.com/poloteme" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Instagram</a>
           <a href="https://open.spotify.com/intl-de/artist/4F5r2orq7hG6sgbNs5CdPT" target="_blank" rel="noopener noreferrer" className="hover:text-black transition-colors">Spotify</a>
         </div>
 
         <div className="text-neutral-400 text-sm font-light text-center md:text-right">
-          <p>hola@poloteme.com</p>
-          <p className="mt-1">© {new Date().getFullYear()} Poloteme. Todos los derechos reservados.</p>
+          <p className="text-black font-medium mb-3">daniel@lizardo.co</p>
+          <div className="flex flex-wrap justify-center md:justify-end gap-x-4 gap-y-2 mb-3">
+             <a href="#privacidad" className="hover:text-black transition-colors">Política de Privacidad</a>
+             <span className="text-neutral-200 hidden sm:inline">|</span>
+             <a href="#legal" className="hover:text-black transition-colors">Aviso Legal</a>
+             <span className="text-neutral-200 hidden sm:inline">|</span>
+             <a href="#cookies" className="hover:text-black transition-colors">Cookies</a>
+          </div>
+          <p className="text-xs text-neutral-400">© {new Date().getFullYear()} Poloteme. Todos los derechos reservados.</p>
         </div>
       </div>
     </footer>

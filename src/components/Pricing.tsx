@@ -4,37 +4,37 @@ import { Check } from 'lucide-react';
 const packages = [
   {
     name: "Mezcla y Mastering",
-    description: "Ideal para canciones ya grabadas y producidas que necesitan el pulido final.",
+    description: "Para temas ya grabados y producidos que necesitan el pulido final.",
     price: "350 €",
     features: [
-      "Alineación y limpieza básica de pistas de audio.",
-      "Procesamiento de dinámica, ecualización y efectos.",
-      "Mastering optimizado para plataformas digitales (Spotify, Apple Music, etc.).",
-      "Entrega de archivo WAV (24-bit/48kHz) y MP3."
+      "Limpieza y alineación de las pistas",
+      "Dinámica, ecualización y efectos",
+      "Mastering optimizado para Spotify, Apple Music y demás",
+      "Entrega en WAV (24-bit/48kHz) y MP3"
     ],
-    revisions: "Incluye: 2 rondas de revisión."
+    revisions: "Incluye 2 rondas de revisión"
   },
   {
-    name: "Producción Completa",
-    description: "Desde la idea acústica o maqueta hasta la canción final.",
+    name: "Producción completa",
+    description: "De la maqueta o la idea acústica a la canción final.",
     price: "950 €",
     features: [
-      "Desarrollo de instrumental y arreglos (beatmaking, synths, bajos, etc.).",
-      "Asesoría en la estructura de la canción.",
-      "Mezcla y Mastering incluidos."
+      "Instrumental y arreglos (beats, sintes, bajos, lo que pida el tema)",
+      "Asesoría en la estructura",
+      "Mezcla y mastering incluidos"
     ],
-    revisions: "Incluye: 3 rondas en producción, 2 rondas en mezcla.",
+    revisions: "Incluye 3 rondas en producción y 2 en mezcla",
     highlight: true
   },
   {
-    name: "Mastering Individual",
-    description: "Para mezclas que ya suenan bien pero necesitan el volumen y la presencia comercial.",
+    name: "Mastering individual",
+    description: "Para mezclas que ya suenan bien y solo les falta volumen y presencia comercial.",
     price: "60 €",
     features: [
-      "Compresión, ecualización tonal y limitación.",
-      "Entrega de archivo WAV optimizado para streaming."
+      "Compresión, ecualización tonal y limitación",
+      "Entrega en WAV optimizado para streaming"
     ],
-    revisions: "Incluye: 1 ronda de revisión."
+    revisions: "Incluye 1 ronda de revisión"
   }
 ];
 
@@ -60,10 +60,10 @@ export default function Pricing({ onOpenForm }: { onOpenForm: () => void }) {
             className="max-w-3xl mx-auto space-y-4"
           >
             <p className="text-lg md:text-xl font-display italic text-neutral-800">
-              Producción, Mezcla y Mastering a Distancia
+              Producción, mezcla y mastering en remoto
             </p>
             <p className="text-neutral-500 font-light leading-relaxed">
-              Trabajo enfocado en sacar el máximo potencial de tu visión. Tú grabas en tu espacio y a tu ritmo; yo me encargo de llevar el sonido al nivel de la industria en el estudio. Todo el proceso es remoto: me envías los stems por correo electrónico y yo te devuelvo un track listo para distribución.
+              Tú grabas en tu espacio y a tu ritmo. Me mandas los stems por correo y yo te devuelvo un track listo para distribuir. Todo a distancia, sin que tengas que pisar un estudio.
             </p>
           </motion.div>
         </div>
@@ -127,7 +127,7 @@ export default function Pricing({ onOpenForm }: { onOpenForm: () => void }) {
             Empezar tu proyecto
           </button>
           <p className="mt-6 text-sm text-neutral-400 font-light">
-            Revisiones extra: 40 € – 50 € por ronda adicional.
+            Rondas extra: 40–50 € por ronda adicional.
           </p>
         </motion.div>
       </div>

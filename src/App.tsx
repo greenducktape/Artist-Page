@@ -7,7 +7,6 @@ import Portfolio from './components/Portfolio';
 import Process from './components/Process';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import FloatingWhatsApp from './components/FloatingWhatsApp';
 import QuoteForm from './components/QuoteForm';
 
 function App() {
@@ -21,17 +20,18 @@ function App() {
     }
   }, [isQuoteFormOpen]);
 
+  const openForm = () => setIsQuoteFormOpen(true);
+
   return (
     <div className="min-h-screen bg-white font-sans selection:bg-neutral-200 selection:text-black">
-      <Hero />
+      <Hero onOpenForm={openForm} />
       <About />
       <Portfolio />
-      <Services />
-      <Pricing onOpenForm={() => setIsQuoteFormOpen(true)} />
+      <Services onOpenForm={openForm} />
+      <Pricing onOpenForm={openForm} />
       <Process />
-      <Contact />
+      <Contact onOpenForm={openForm} />
       <Footer />
-      <FloatingWhatsApp />
       
       {isQuoteFormOpen && (
         <QuoteForm 

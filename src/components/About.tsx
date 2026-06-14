@@ -26,18 +26,17 @@ export default function About() {
           <div className="md:col-span-7 space-y-8">
             <h2 className="text-sm font-medium tracking-[0.2em] text-neutral-400 uppercase">Quién Soy</h2>
             <p className="text-3xl md:text-4xl lg:text-5xl font-display font-medium leading-tight text-neutral-900 tracking-tight">
-              Soy Poloteme y llevo <span className="text-black relative inline-block">media vida<span className="absolute -bottom-1 left-0 w-full h-[2px] bg-neutral-300"></span></span> haciendo música.
+              Llevo haciendo música desde que <span className="text-black relative inline-block">tengo memoria<span className="absolute -bottom-1 left-0 w-full h-[2px] bg-neutral-300"></span></span>.
             </p>
             <div className="space-y-6 text-lg md:text-xl text-neutral-500 font-light leading-relaxed">
               <p>
-                Empecé tocando en la calle con 15 años y desde entonces no he parado. 
-                De origen eslovaco-dominicano, criado en Badajoz, me formé en el conservatorio (saxofón) y soy multiinstrumentista autodidacta.
+                Empecé a los 15 tocando en la calle en Badajoz; de ahí al conservatorio, a producir en Madrid y a publicar más de 80 canciones propias.
               </p>
               <p>
-                Tengo más de <strong className="font-medium text-neutral-900">80 canciones publicadas</strong> y he producido para otros artistas que han sonado en medio mundo.
+                Por el camino produje «De ellos aprendí» para David Rees —más de 600 millones de reproducciones— y temas que han sonado en media España y Latinoamérica.
               </p>
               <p className="text-neutral-900 font-medium pt-4">
-                Hoy ayudo a otros artistas a sacar lo mejor de sus canciones.
+                Hoy hago lo que más me gusta: coger tu canción y dejarla lista para competir con cualquiera.
               </p>
             </div>
           </div>

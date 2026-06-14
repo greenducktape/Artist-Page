@@ -87,7 +87,7 @@ export default function Portfolio() {
               transition={{ delay: 0.1 }}
               className="text-xl md:text-2xl text-neutral-500 font-light"
             >
-              Cierra los ojos y dale al play.
+              Dale al play. Esto es lo que hago.
             </motion.p>
           </div>
           

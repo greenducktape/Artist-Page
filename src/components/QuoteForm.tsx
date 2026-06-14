@@ -150,6 +150,8 @@ function Step4({ data, updateData, nextStep, prevStep }: StepProps) {
 }
 
 function Step5({ data, updateData, prevStep, submitForm, isSubmitting }: any) {
+  const [accepted, setAccepted] = useState(false);
+
   return (
     <div className="flex flex-col h-full justify-center">
       <h2 className="text-3xl md:text-5xl font-display font-medium mb-8 text-black leading-tight">
@@ -163,11 +165,26 @@ function Step5({ data, updateData, prevStep, submitForm, isSubmitting }: any) {
         autoFocus
         value={data.link}
         onChange={(e) => updateData({ link: e.target.value })}
-        onKeyDown={(e) => !isSubmitting && e.key === 'Enter' && submitForm()}
+        onKeyDown={(e) => !isSubmitting && accepted && e.key === 'Enter' && submitForm()}
         placeholder="https://..."
         className="w-full text-xl md:text-2xl font-light text-black placeholder:text-neutral-300 bg-transparent border-b-2 border-neutral-200 focus:border-black outline-none py-4 transition-colors mb-12"
         disabled={isSubmitting}
       />
+      
+      <div className="flex items-start gap-4 mb-12">
+        <input 
+          type="checkbox" 
+          id="terms_quote" 
+          checked={accepted}
+          onChange={(e) => setAccepted(e.target.checked)}
+          className="mt-1 shrink-0 w-5 h-5 border border-neutral-300 rounded focus:ring-black cursor-pointer accent-black"
+          disabled={isSubmitting}
+        />
+        <label htmlFor="terms_quote" className="text-sm md:text-base text-neutral-500 font-light cursor-pointer">
+          He leído y acepto la <a href="#privacidad" target="_blank" className="underline hover:text-black transition-colors" onClick={(e) => e.stopPropagation()}>Política de Privacidad</a> para el tratamiento de mis datos personales.
+        </label>
+      </div>
+
       <div className="flex gap-4 items-center mt-auto md:mt-12">
         <button
           onClick={prevStep}
@@ -178,8 +195,8 @@ function Step5({ data, updateData, prevStep, submitForm, isSubmitting }: any) {
         </button>
         <button
           onClick={submitForm}
-          disabled={isSubmitting}
-          className="flex items-center gap-2 px-10 py-5 bg-black text-white rounded-full font-medium text-lg hover:bg-neutral-800 transition-colors shadow-xl disabled:opacity-70"
+          disabled={isSubmitting || !accepted}
+          className="flex items-center gap-2 px-10 py-5 bg-black text-white rounded-full font-medium text-lg hover:bg-neutral-800 transition-colors shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
         >
           {isSubmitting ? "Enviando..." : "Enviar Solicitud"}
         </button>
@@ -246,10 +263,14 @@ export default function QuoteForm({ isOpen, onClose }: { isOpen: boolean; onClos
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: "YOUR_ACCESS_KEY_HERE",
+          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || "7aeef351-58be-412e-9469-dc146508d1f9",
           subject: `Nuevo Presupuesto de ${formData.nombre} - ${formData.servicio}`,
           from_name: formData.nombre,
-          ...formData
+          name: formData.nombre,
+          email: formData.email,
+          service: formData.servicio,
+          message: formData.detalles,
+          link: formData.link
         }),
       });
       const result = await response.json();

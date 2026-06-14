@@ -4,26 +4,26 @@ import { MessageSquare, FileText, Headphones, CheckCircle2 } from 'lucide-react'
 const steps = [
   {
     num: "01",
-    title: "Hablemos",
-    description: "Me escribes y me cuentas tu idea, referencias y lo que buscas conseguir.",
+    title: "Hablamos",
+    description: "Me escribes, me pasas referencias y me cuentas qué quieres conseguir.",
     icon: MessageSquare
   },
   {
     num: "02",
     title: "Propuesta",
-    description: "Te mando un presupuesto claro, un plan de trabajo y plazos de entrega.",
+    description: "Te mando presupuesto cerrado, plan de trabajo y fecha de entrega. Lo que ves es lo que pagas.",
     icon: FileText
   },
   {
     num: "03",
     title: "Producción",
-    description: "Trabajamos juntos en el proyecto, con revisiones para asegurar que te encanta.",
+    description: "Trabajamos el tema con revisiones, hasta que te guste a ti. No a mí: a ti.",
     icon: Headphones
   },
   {
     num: "04",
     title: "Entrega",
-    description: "Recibes tu canción lista para publicar y reventar los altavoces.",
+    description: "Recibes la canción masterizada y lista para subir a todas las plataformas.",
     icon: CheckCircle2
   }
 ];
@@ -50,7 +50,7 @@ export default function Process() {
             transition={{ delay: 0.1 }}
             className="text-xl md:text-2xl text-neutral-500 font-light"
           >
-            Sin líos ni letra pequeña. Un proceso simple para grandes resultados.
+            Sin letra pequeña. Cuatro pasos y a publicar.
           </motion.p>
         </div>
 

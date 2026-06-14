@@ -4,28 +4,28 @@ import { Music, Sliders, Mic2 } from 'lucide-react';
 const services = [
   {
     title: "Producción musical",
-    description: "Llevo tu maqueta a un tema terminado. Composición, arreglos, instrumentación y dirección artística.",
+    description: "Me traes una idea, una maqueta o cuatro acordes en el móvil, y te devuelvo una canción terminada: arreglos, instrumentación y la dirección que le falta para sonar a algo.",
     icon: Music,
     cta: "Quiero producir un tema",
     value: "produccion"
   },
   {
-    title: "Mezcla y Mastering",
-    description: "Hago que tu canción suene profesional y lista para todas las plataformas, con la potencia y claridad que necesita.",
+    title: "Mezcla y mastering",
+    description: "Tu tema ya grabado, pero suena plano o se pierde en el coche. Lo equilibro, le doy pegada y lo dejo al volumen de la industria en cualquier altavoz.",
     icon: Sliders,
     cta: "Necesito mezcla/mastering",
     value: "mezcla"
   },
   {
     title: "Voz y composición",
-    description: "Pongo voz (topline), escribo melodías o colaboro como artista invitado (featuring) en tu proyecto.",
+    description: "Pongo voz, escribo la melodía que no te sale o entro como featuring. Si tu proyecto necesita una voz, soy esa voz.",
     icon: Mic2,
     cta: "Quiero colaborar",
     value: "colaboracion"
   }
 ];
 
-export default function Services() {
+export default function Services({ onOpenForm }: { onOpenForm: () => void }) {
   return (
     <section id="que-hago" className="py-24 md:py-32 px-6 bg-white">
       <div className="max-w-6xl mx-auto">
@@ -45,7 +45,7 @@ export default function Services() {
             transition={{ delay: 0.1 }}
             className="text-xl md:text-2xl text-neutral-500 max-w-3xl mx-auto font-light"
           >
-            El corazón de mis servicios. Todo lo que necesitas para que tu proyecto suene increíble.
+            Tres formas de trabajar contigo. Elige la que necesites.
           </motion.p>
         </div>
 
@@ -68,19 +68,15 @@ export default function Services() {
                 <p className="text-neutral-500 leading-relaxed text-lg mb-10 flex-grow font-light">
                   {service.description}
                 </p>
-                <a 
-                  href={`#contacto?tipo=${service.value}`}
-                  className="inline-flex items-center text-sm font-medium text-black group/btn mt-auto w-max uppercase tracking-wider"
-                  onClick={() => {
-                    const select = document.getElementById('tipo-proyecto') as HTMLSelectElement;
-                    if(select) select.value = service.value;
-                  }}
+                <button 
+                  onClick={onOpenForm}
+                  className="inline-flex items-center text-sm font-medium text-black group/btn mt-auto w-max uppercase tracking-wider text-left"
                 >
                   <span className="border-b border-black/20 group-hover/btn:border-black transition-colors pb-1">
                     {service.cta}
                   </span>
                   <span className="ml-2 group-hover/btn:translate-x-2 transition-transform duration-300">→</span>
-                </a>
+                </button>
               </motion.div>
             );
           })}
