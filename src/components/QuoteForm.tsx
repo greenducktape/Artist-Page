@@ -149,7 +149,7 @@ function Step4({ data, updateData, nextStep, prevStep }: StepProps) {
   );
 }
 
-function Step5({ data, updateData, prevStep, submitForm, isSubmitting }: any) {
+function Step5({ data, updateData, prevStep, submitForm, isSubmitting, onOpenLegal }: any) {
   const [accepted, setAccepted] = useState(false);
 
   return (
@@ -181,7 +181,7 @@ function Step5({ data, updateData, prevStep, submitForm, isSubmitting }: any) {
           disabled={isSubmitting}
         />
         <label htmlFor="terms_quote" className="text-sm md:text-base text-neutral-500 font-light cursor-pointer">
-          He leído y acepto la <a href="#privacidad" target="_blank" className="underline hover:text-black transition-colors" onClick={(e) => e.stopPropagation()}>Política de Privacidad</a> para el tratamiento de mis datos personales.
+          He leído y acepto la <button type="button" className="underline hover:text-black transition-colors" onClick={(e) => { e.stopPropagation(); onOpenLegal?.('privacidad'); }}>Política de Privacidad</button> para el tratamiento de mis datos personales.
         </label>
       </div>
 
@@ -231,7 +231,7 @@ function SuccessStep({ onClose }: { onClose: () => void }) {
   );
 }
 
-export default function QuoteForm({ isOpen, onClose }: { isOpen: boolean; onClose: () => void }) {
+export default function QuoteForm({ isOpen, onClose, onOpenLegal }: { isOpen: boolean; onClose: () => void; onOpenLegal?: (type: any) => void }) {
   const [step, setStep] = useState(1);
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({
@@ -331,7 +331,7 @@ export default function QuoteForm({ isOpen, onClose }: { isOpen: boolean; onClos
                 {step === 2 && <Step2 data={formData} updateData={updateData} nextStep={nextStep} prevStep={prevStep} />}
                 {step === 3 && <Step3 data={formData} updateData={updateData} nextStep={nextStep} prevStep={prevStep} />}
                 {step === 4 && <Step4 data={formData} updateData={updateData} nextStep={nextStep} prevStep={prevStep} />}
-                {step === 5 && <Step5 data={formData} updateData={updateData} prevStep={prevStep} submitForm={submitForm} isSubmitting={isSubmitting} />}
+                {step === 5 && <Step5 data={formData} updateData={updateData} prevStep={prevStep} submitForm={submitForm} isSubmitting={isSubmitting} onOpenLegal={onOpenLegal} />}
               </motion.div>
             ) : (
               <motion.div

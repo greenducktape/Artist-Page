@@ -8,17 +8,19 @@ import Process from './components/Process';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import QuoteForm from './components/QuoteForm';
+import LegalModal, { LegalDocType } from './components/LegalModal';
 
 function App() {
   const [isQuoteFormOpen, setIsQuoteFormOpen] = useState(false);
+  const [activeLegalModal, setActiveLegalModal] = useState<LegalDocType>(null);
 
   useEffect(() => {
-    if (isQuoteFormOpen) {
+    if (isQuoteFormOpen || activeLegalModal) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = '';
     }
-  }, [isQuoteFormOpen]);
+  }, [isQuoteFormOpen, activeLegalModal]);
 
   const openForm = () => setIsQuoteFormOpen(true);
 
@@ -31,12 +33,20 @@ function App() {
       <Pricing onOpenForm={openForm} />
       <Process />
       <Contact onOpenForm={openForm} />
-      <Footer />
+      <Footer onOpenLegal={(type) => setActiveLegalModal(type)} />
       
       {isQuoteFormOpen && (
         <QuoteForm 
           isOpen={isQuoteFormOpen} 
           onClose={() => setIsQuoteFormOpen(false)} 
+          onOpenLegal={(type: LegalDocType) => setActiveLegalModal(type)}
+        />
+      )}
+
+      {activeLegalModal && (
+        <LegalModal 
+          type={activeLegalModal} 
+          onClose={() => setActiveLegalModal(null)} 
         />
       )}
     </div>

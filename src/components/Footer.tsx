@@ -1,4 +1,6 @@
-export default function Footer() {
+import { LegalDocType } from './LegalModal';
+
+export default function Footer({ onOpenLegal }: { onOpenLegal: (type: LegalDocType) => void }) {
   return (
     <footer className="bg-white py-14 px-6 border-t border-neutral-100">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 md:gap-6">
@@ -18,11 +20,11 @@ export default function Footer() {
         <div className="text-neutral-400 text-sm font-light text-center md:text-right">
           <p className="text-black font-medium mb-3">daniel@lizardo.co</p>
           <div className="flex flex-wrap justify-center md:justify-end gap-x-4 gap-y-2 mb-3">
-             <a href="#privacidad" className="hover:text-black transition-colors">Política de Privacidad</a>
+             <button onClick={() => onOpenLegal('privacidad')} className="hover:text-black transition-colors focus:outline-none focus:underline">Política de Privacidad</button>
              <span className="text-neutral-200 hidden sm:inline">|</span>
-             <a href="#legal" className="hover:text-black transition-colors">Aviso Legal</a>
+             <button onClick={() => onOpenLegal('legal')} className="hover:text-black transition-colors focus:outline-none focus:underline">Aviso Legal</button>
              <span className="text-neutral-200 hidden sm:inline">|</span>
-             <a href="#cookies" className="hover:text-black transition-colors">Cookies</a>
+             <button onClick={() => onOpenLegal('cookies')} className="hover:text-black transition-colors focus:outline-none focus:underline">Cookies</button>
           </div>
           <p className="text-xs text-neutral-400">© {new Date().getFullYear()} Poloteme. Todos los derechos reservados.</p>
         </div>
