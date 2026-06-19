@@ -13,12 +13,12 @@ export default function Contact({ onOpenForm }: { onOpenForm: () => void }) {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-5xl md:text-7xl font-display font-medium mb-10 leading-tight tracking-tight text-black">
-            ¿Tienes un proyecto<br/>en mente?
+            ¿Tienes un proyecto?
           </h2>
           
           <div className="text-xl md:text-2xl text-neutral-500 space-y-6 font-light mb-16 leading-relaxed max-w-2xl mx-auto">
             <p>
-              Una maqueta a medias, una idea suelta o un tema que necesita el último empujón. Cuéntamelo y vemos cómo darle forma.
+              Una maqueta, una sesión a medias o un tema que no te termina de cuadrar en la mezcla. Pásamelo y vemos.
             </p>
           </div>
 

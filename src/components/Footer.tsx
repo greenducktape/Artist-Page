@@ -2,8 +2,12 @@ export default function Footer() {
   return (
     <footer className="bg-white py-14 px-6 border-t border-neutral-100">
       <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 md:gap-6">
-        <div className="font-display font-medium text-3xl tracking-tighter text-black">
-          Poloteme
+        <div className="w-32 md:w-40 opacity-90 hover:opacity-100 transition-opacity">
+          <img 
+            src="https://raw.githubusercontent.com/greenducktape/Polo-Branding/main/Poloteme%20Word%20Logo.svg"
+            alt="Poloteme"
+            className="w-full h-auto"
+          />
         </div>
         
         <div className="flex gap-8 text-sm text-neutral-500 font-medium tracking-wider uppercase">

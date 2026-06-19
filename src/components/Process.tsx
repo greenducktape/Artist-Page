@@ -1,30 +1,29 @@
 import { motion } from 'motion/react';
-import { MessageSquare, FileText, Headphones, CheckCircle2 } from 'lucide-react';
 
 const steps = [
   {
     num: "01",
-    title: "Hablamos",
-    description: "Me escribes, me pasas referencias y me cuentas qué quieres conseguir.",
-    icon: MessageSquare
+    title: "Brief",
+    description: "Me escribes con referencias y lo que buscas. Cuanto más claro el target, mejor.",
+    iconUrl: "https://raw.githubusercontent.com/greenducktape/Polo-Branding/main/Thinking%20Poloteme%20Icon%20Face.svg"
   },
   {
     num: "02",
     title: "Propuesta",
-    description: "Te mando presupuesto cerrado, plan de trabajo y fecha de entrega. Lo que ves es lo que pagas.",
-    icon: FileText
+    description: "Presupuesto cerrado, alcance y fecha de entrega. Lo que acordamos es lo que pagas.",
+    iconUrl: "https://raw.githubusercontent.com/greenducktape/Polo-Branding/main/Star%20Icon.svg"
   },
   {
     num: "03",
     title: "Producción",
-    description: "Trabajamos el tema con revisiones, hasta que te guste a ti. No a mí: a ti.",
-    icon: Headphones
+    description: "Trabajo el tema con revisiones pautadas. Notas claras, vueltas rápidas.",
+    iconUrl: "https://raw.githubusercontent.com/greenducktape/Polo-Branding/main/Speaker%201%20icon.svg"
   },
   {
     num: "04",
     title: "Entrega",
-    description: "Recibes la canción masterizada y lista para subir a todas las plataformas.",
-    icon: CheckCircle2
+    description: "Track final + stems si los necesitas, listo para distribuir.",
+    iconUrl: "https://raw.githubusercontent.com/greenducktape/Polo-Branding/main/Wav%20Wave%202.svg"
   }
 ];
 
@@ -60,7 +59,6 @@ export default function Process() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-px w-full bg-neutral-100 hidden md:block"></div>
           
           {steps.map((step, index) => {
-            const Icon = step.icon;
             return (
               <motion.div
                 key={index}
@@ -74,8 +72,8 @@ export default function Process() {
                   {step.num}
                 </div>
                 <div className="relative z-10">
-                  <div className="w-16 h-16 bg-neutral-50 rounded-2xl flex items-center justify-center mb-8 text-black shadow-sm">
-                    <Icon size={28} strokeWidth={1.5} />
+                  <div className="w-16 h-16 bg-neutral-50 rounded-2xl flex items-center justify-center mb-8 shadow-sm border border-neutral-100 p-3 group-hover:-rotate-6 group-hover:scale-105 transition-all duration-300">
+                    <img src={step.iconUrl} alt={step.title} className="w-full h-full object-contain filter" />
                   </div>
                   <h3 className="text-3xl font-display font-medium mb-4 text-black tracking-tight">{step.title}</h3>
                   <p className="text-neutral-500 text-lg font-light leading-relaxed">{step.description}</p>

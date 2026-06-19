@@ -1,25 +1,24 @@
 import { motion } from 'motion/react';
-import { Music, Sliders, Mic2 } from 'lucide-react';
 
 const services = [
   {
-    title: "Producción musical",
-    description: "Me traes una idea, una maqueta o cuatro acordes en el móvil, y te devuelvo una canción terminada: arreglos, instrumentación y la dirección que le falta para sonar a algo.",
-    icon: Music,
+    title: "Producción",
+    description: "Desarrollo del tema desde la idea o la maqueta: arreglos, programación, instrumentación real y dirección artística. Cojo lo que tienes y lo llevo a algo con identidad y estructura de single.",
+    iconUrl: "https://raw.githubusercontent.com/greenducktape/Polo-Branding/main/Guitar%20icon.svg",
     cta: "Quiero producir un tema",
     value: "produccion"
   },
   {
     title: "Mezcla y mastering",
-    description: "Tu tema ya grabado, pero suena plano o se pierde en el coche. Lo equilibro, le doy pegada y lo dejo al volumen de la industria en cualquier altavoz.",
-    icon: Sliders,
+    description: "Mezcla con criterio: balance, profundidad y pegada, traducción en todos los sistemas. Master competitivo en loudness y tono, entregado para DSP. Si quieres referencias o un loudness target concreto, lo respeto.",
+    iconUrl: "https://raw.githubusercontent.com/greenducktape/Polo-Branding/main/Compressor%20icon.svg",
     cta: "Necesito mezcla/mastering",
     value: "mezcla"
   },
   {
     title: "Voz y composición",
-    description: "Pongo voz, escribo la melodía que no te sale o entro como featuring. Si tu proyecto necesita una voz, soy esa voz.",
-    icon: Mic2,
+    description: "Topline, coros, armonías y featuring. Voz grabada y editada limpia, o escritura desde cero si el tema lo pide.",
+    iconUrl: "https://raw.githubusercontent.com/greenducktape/Polo-Branding/main/Smile%20Poloteme%20Icon%20Face.svg",
     cta: "Quiero colaborar",
     value: "colaboracion"
   }
@@ -51,7 +50,6 @@ export default function Services({ onOpenForm }: { onOpenForm: () => void }) {
 
         <div className="grid md:grid-cols-3 gap-8 md:gap-10">
           {services.map((service, index) => {
-            const Icon = service.icon;
             return (
               <motion.div
                 key={index}
@@ -59,10 +57,10 @@ export default function Services({ onOpenForm }: { onOpenForm: () => void }) {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="bg-neutral-50 p-10 rounded-[2.5rem] hover:shadow-xl hover:shadow-neutral-200/50 transition-all duration-500 group flex flex-col h-full border border-neutral-100"
+                className="bg-neutral-50 p-10 rounded-[2.5rem] hover:shadow-xl hover:shadow-neutral-200/50 transition-all duration-500 group flex flex-col h-full border border-neutral-100 relative overflow-hidden"
               >
-                <div className="w-16 h-16 bg-white border border-neutral-200 rounded-2xl flex items-center justify-center mb-8 text-black group-hover:scale-105 group-hover:bg-black group-hover:text-white transition-all duration-300 shadow-sm">
-                  <Icon size={32} strokeWidth={1.5} />
+                <div className="w-16 h-16 bg-white border border-neutral-200 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-105 group-hover:-rotate-3 transition-all duration-300 shadow-sm p-3 relative z-10 text-black">
+                  <img src={service.iconUrl} alt={service.title} className="w-full h-full object-contain filter transition-all duration-500" />
                 </div>
                 <h3 className="text-3xl font-display font-medium mb-4 text-black tracking-tight">{service.title}</h3>
                 <p className="text-neutral-500 leading-relaxed text-lg mb-10 flex-grow font-light">
@@ -70,7 +68,7 @@ export default function Services({ onOpenForm }: { onOpenForm: () => void }) {
                 </p>
                 <button 
                   onClick={onOpenForm}
-                  className="inline-flex items-center text-sm font-medium text-black group/btn mt-auto w-max uppercase tracking-wider text-left"
+                  className="inline-flex items-center text-sm font-medium text-black group/btn mt-auto w-max uppercase tracking-wider text-left relative z-10"
                 >
                   <span className="border-b border-black/20 group-hover/btn:border-black transition-colors pb-1">
                     {service.cta}

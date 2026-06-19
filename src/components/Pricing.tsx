@@ -4,37 +4,37 @@ import { Check } from 'lucide-react';
 const packages = [
   {
     name: "Mezcla y Mastering",
-    description: "Para temas ya grabados y producidos que necesitan el pulido final.",
+    description: "Para producciones ya cerradas que necesitan el acabado.",
     price: "350 €",
     features: [
-      "Limpieza y alineación de las pistas",
-      "Dinámica, ecualización y efectos",
-      "Mastering optimizado para Spotify, Apple Music y demás",
+      "Edición, fase y limpieza de stems",
+      "Balance, dinámica, EQ y efectos",
+      "Master optimizado para DSP",
       "Entrega en WAV (24-bit/48kHz) y MP3"
     ],
-    revisions: "Incluye 2 rondas de revisión"
+    revisions: "2 rondas de revisión"
   },
   {
     name: "Producción completa",
-    description: "De la maqueta o la idea acústica a la canción final.",
+    description: "De la maqueta a la masterizada.",
     price: "950 €",
     features: [
-      "Instrumental y arreglos (beats, sintes, bajos, lo que pida el tema)",
-      "Asesoría en la estructura",
+      "Instrumental y arreglos (beats, sintes, bajos, instrumentación)",
+      "Trabajo de estructura y arreglo",
       "Mezcla y mastering incluidos"
     ],
-    revisions: "Incluye 3 rondas en producción y 2 en mezcla",
+    revisions: "3 rondas en producción · 2 en mezcla",
     highlight: true
   },
   {
-    name: "Mastering individual",
-    description: "Para mezclas que ya suenan bien y solo les falta volumen y presencia comercial.",
+    name: "Mastering",
+    description: "Para mezclas resueltas que necesitan loudness y cohesión tonal.",
     price: "60 €",
     features: [
-      "Compresión, ecualización tonal y limitación",
-      "Entrega en WAV optimizado para streaming"
+      "Compresión, EQ tonal y limitación",
+      "WAV optimizado para streaming"
     ],
-    revisions: "Incluye 1 ronda de revisión"
+    revisions: "1 ronda de revisión"
   }
 ];
 
@@ -60,10 +60,10 @@ export default function Pricing({ onOpenForm }: { onOpenForm: () => void }) {
             className="max-w-3xl mx-auto space-y-4"
           >
             <p className="text-lg md:text-xl font-display italic text-neutral-800">
-              Producción, mezcla y mastering en remoto
+              Todo en remoto
             </p>
             <p className="text-neutral-500 font-light leading-relaxed">
-              Tú grabas en tu espacio y a tu ritmo. Me mandas los stems por correo y yo te devuelvo un track listo para distribuir. Todo a distancia, sin que tengas que pisar un estudio.
+              Me pasas los stems (o la sesión) y te devuelvo el track listo para distribución. Sin pisar estudio.
             </p>
           </motion.div>
         </div>
@@ -127,7 +127,7 @@ export default function Pricing({ onOpenForm }: { onOpenForm: () => void }) {
             Empezar tu proyecto
           </button>
           <p className="mt-6 text-sm text-neutral-400 font-light">
-            Rondas extra: 40–50 € por ronda adicional.
+            Rondas extra: 40–50 € cada una. Stems organizados y nombrados, por favor — agiliza todo.
           </p>
         </motion.div>
       </div>
