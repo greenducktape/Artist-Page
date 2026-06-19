@@ -54,8 +54,29 @@ const globalSpotifyControllers = new Set<any>();
 
 function SpotifyPlayer({ item }: { item: SpotifyMedia }) {
   const containerRef = useRef<HTMLDivElement>(null);
+  const [isInView, setIsInView] = useState(false);
 
   useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: '200px' } // Load slightly before it comes into view
+    );
+
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  useEffect(() => {
+    if (!isInView) return;
+
     let currentController: any = null;
     let isMounted = true;
 
@@ -123,9 +144,18 @@ function SpotifyPlayer({ item }: { item: SpotifyMedia }) {
         containerRef.current.innerHTML = '';
       }
     };
-  }, [item.id, item.type]);
+  }, [item.id, item.type, isInView]);
 
-  return <div ref={containerRef} className="w-full rounded-2xl overflow-hidden [&>iframe]:rounded-2xl shadow-sm" />;
+  return (
+    <div 
+      ref={containerRef} 
+      className="w-full rounded-2xl overflow-hidden [&>iframe]:rounded-2xl shadow-sm min-h-[152px] bg-neutral-100 flex items-center justify-center"
+    >
+      {!isInView && (
+        <div className="w-6 h-6 border-2 border-neutral-300 border-t-neutral-600 rounded-full animate-spin opacity-50" />
+      )}
+    </div>
+  );
 }
 
 export default function Portfolio() {
