@@ -50,7 +50,7 @@ const spotifyMediaList: SpotifyMedia[] = [
 
 export default function Portfolio() {
   const [filter, setFilter] = useState<'todos' | 'artista' | 'productor'>('todos');
-  const [visibleCount, setVisibleCount] = useState(8);
+  const [visibleCount, setVisibleCount] = useState(9);
 
   const filteredMedia = spotifyMediaList.filter(item => 
     filter === 'todos' ? true : item.role === filter
@@ -59,12 +59,12 @@ export default function Portfolio() {
   const displayedMedia = filteredMedia.slice(0, visibleCount);
 
   const loadMore = () => {
-    setVisibleCount(prev => Math.min(prev + 8, filteredMedia.length));
+    setVisibleCount(prev => Math.min(prev + 9, filteredMedia.length));
   };
 
   const handleFilterChange = (newFilter: 'todos' | 'artista' | 'productor') => {
     setFilter(newFilter);
-    setVisibleCount(8); // Reset count on filter view change
+    setVisibleCount(9); // Reset count on filter view change
   };
 
   return (
@@ -113,7 +113,7 @@ export default function Portfolio() {
           </motion.div>
         </div>
 
-        <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
           <AnimatePresence mode="popLayout">
             {displayedMedia.map((item, index) => (
               <motion.div
@@ -123,13 +123,13 @@ export default function Portfolio() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4 }}
                 key={item.id + item.role}
-                className="w-full bg-white rounded-3xl overflow-hidden border border-neutral-100 shadow-sm hover:shadow-xl transition-shadow duration-500"
+                className="w-full relative hover:-translate-y-1 transition-transform duration-300"
               >
                 <iframe
-                  style={{ borderRadius: '24px' }}
+                  style={{ borderRadius: '16px' }}
                   src={`https://open.spotify.com/embed/${item.type}/${item.id}?utm_source=generator&theme=0`}
                   width="100%"
-                  height="352"
+                  height="152"
                   frameBorder="0"
                   allowFullScreen
                   allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
@@ -146,11 +146,11 @@ export default function Portfolio() {
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="mt-20 text-center"
+            className="mt-16 text-center"
           >
             <button
               onClick={loadMore}
-              className="px-10 py-4 bg-white border border-neutral-200 text-black rounded-full font-medium text-lg hover:bg-neutral-50 transition-all shadow-sm hover:shadow-md"
+              className="px-8 py-3 bg-white border border-neutral-200 text-black rounded-full font-medium text-base hover:bg-neutral-50 transition-all shadow-sm hover:shadow-md uppercase tracking-wider"
             >
               Cargar más proyectos
             </button>
