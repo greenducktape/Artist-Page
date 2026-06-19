@@ -27,13 +27,13 @@ export default function Hero({ onOpenForm }: { onOpenForm: () => void }) {
   return (
     <section id="hero" className="relative min-h-[100svh] flex flex-col justify-center items-center px-6 overflow-hidden bg-white">
       {/* Background accents using SVGs */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
+      <div className="absolute inset-0 z-0 pointer-events-none opacity-20 md:opacity-100">
         <motion.img 
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 0.8, y: [0, -15, 0] }}
           transition={{ opacity: { duration: 1, delay: 0.2 }, y: { repeat: Infinity, duration: 6, ease: "easeInOut" } }}
           src="https://raw.githubusercontent.com/greenducktape/Polo-Branding/main/Wav%20Wave.svg"
-          className="absolute top-20 right-[5%] md:right-[15%] w-32 h-32 md:w-48 md:h-48 object-contain"
+          className="absolute top-20 -right-10 md:right-[15%] w-32 h-32 md:w-48 md:h-48 object-contain"
           alt=""
         />
         <motion.img 
@@ -41,7 +41,7 @@ export default function Hero({ onOpenForm }: { onOpenForm: () => void }) {
           animate={{ opacity: 0.7, y: [0, 20, 0] }}
           transition={{ opacity: { duration: 1, delay: 0.4 }, y: { repeat: Infinity, duration: 7, ease: "easeInOut", delay: 1 } }}
           src="https://raw.githubusercontent.com/greenducktape/Polo-Branding/main/Jack%20Cable.svg"
-          className="absolute bottom-32 left-[5%] md:left-[10%] w-24 h-24 md:w-32 md:h-32 object-contain"
+          className="absolute bottom-20 -left-10 md:bottom-32 md:left-[10%] w-24 h-24 md:w-32 md:h-32 object-contain"
           alt=""
         />
         <motion.img 
@@ -49,7 +49,7 @@ export default function Hero({ onOpenForm }: { onOpenForm: () => void }) {
           animate={{ opacity: 0.9, y: [0, -10, 0] }}
           transition={{ opacity: { duration: 1, delay: 0.6 }, y: { repeat: Infinity, duration: 5, ease: "easeInOut", delay: 2 } }}
           src="https://raw.githubusercontent.com/greenducktape/Polo-Branding/main/Guitar%20icon.svg"
-          className="absolute top-[15%] left-[5%] md:left-[20%] w-24 h-24 md:w-40 md:h-40 object-contain -rotate-12"
+          className="absolute top-[15%] -left-10 md:left-[20%] w-24 h-24 md:w-40 md:h-40 object-contain -rotate-12"
           alt=""
         />
         <motion.img 
@@ -57,7 +57,7 @@ export default function Hero({ onOpenForm }: { onOpenForm: () => void }) {
           animate={{ opacity: 0.8, y: [0, 15, 0] }}
           transition={{ opacity: { duration: 1, delay: 0.8 }, y: { repeat: Infinity, duration: 6.5, ease: "easeInOut", delay: 1.5 } }}
           src="https://raw.githubusercontent.com/greenducktape/Polo-Branding/main/Snare%20Icon.svg"
-          className="absolute bottom-[25%] right-[5%] md:right-[20%] w-20 h-20 md:w-28 md:h-28 object-contain rotate-12"
+          className="absolute bottom-[25%] -right-10 md:right-[20%] w-20 h-20 md:w-28 md:h-28 object-contain rotate-12"
           alt=""
         />
         <motion.img 
@@ -65,13 +65,13 @@ export default function Hero({ onOpenForm }: { onOpenForm: () => void }) {
           animate={{ opacity: 0.8, scale: [1, 1.05, 1] }}
           transition={{ opacity: { duration: 1, delay: 1 }, scale: { repeat: Infinity, duration: 4, ease: "easeInOut" } }}
           src="https://raw.githubusercontent.com/greenducktape/Polo-Branding/main/Compressor%20icon.svg"
-          className="absolute top-[40%] right-[2%] md:right-[8%] w-16 h-16 md:w-24 md:h-24 object-contain"
+          className="absolute top-[40%] -right-5 md:right-[8%] w-16 h-16 md:w-24 md:h-24 object-contain"
           alt=""
         />
         <div className="absolute top-0 inset-x-0 h-full bg-gradient-to-b from-neutral-50/10 to-white/50 backdrop-blur-[1px]"></div>
       </div>
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-12 md:gap-20 pt-16">
+      <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-center gap-6 md:gap-20 pt-8 md:pt-16">
         
         {/* Left: Stop Motion Faces */}
         <motion.div
@@ -80,7 +80,7 @@ export default function Hero({ onOpenForm }: { onOpenForm: () => void }) {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="w-full md:w-1/2 flex justify-center items-center"
         >
-          <div className="relative w-64 h-64 sm:w-80 sm:h-80 md:w-[28rem] md:h-[28rem]">
+          <div className="relative w-56 h-56 sm:w-80 sm:h-80 md:w-[28rem] md:h-[28rem]">
             {faceImages.map((src, index) => (
               <img 
                 key={src}
@@ -98,7 +98,7 @@ export default function Hero({ onOpenForm }: { onOpenForm: () => void }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="mb-8 w-full max-w-[16rem] sm:max-w-xs md:max-w-md lg:max-w-lg"
+            className="mb-6 md:mb-8 w-full max-w-[14rem] sm:max-w-xs md:max-w-md lg:max-w-lg"
           >
             <img 
               src="https://raw.githubusercontent.com/greenducktape/Polo-Branding/main/Poloteme%20Word%20Logo.svg"
@@ -111,7 +111,7 @@ export default function Hero({ onOpenForm }: { onOpenForm: () => void }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-2xl sm:text-3xl md:text-5xl font-display font-medium italic mb-6 max-w-2xl text-neutral-900 leading-tight tracking-tight"
+            className="text-[1.75rem] sm:text-3xl md:text-5xl font-display font-medium italic mb-4 md:mb-6 max-w-2xl text-neutral-900 leading-tight tracking-tight px-4 md:px-0"
           >
             "Que se note que eres tú desde el primer acorde."
           </motion.p>
@@ -120,7 +120,7 @@ export default function Hero({ onOpenForm }: { onOpenForm: () => void }) {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
-            className="text-base sm:text-lg md:text-xl font-light text-neutral-500 mb-10 tracking-wide uppercase max-w-lg"
+            className="text-sm md:text-xl font-light text-neutral-500 mb-8 md:mb-10 tracking-wide uppercase max-w-lg px-6 md:px-0"
           >
             Producción y mezcla para el salto que ya estás listo para dar.
           </motion.p>
@@ -134,7 +134,7 @@ export default function Hero({ onOpenForm }: { onOpenForm: () => void }) {
           >
             <a 
               href="#escucha" 
-              className="w-full sm:w-auto px-10 py-4 bg-black text-white rounded-full font-medium text-lg hover:bg-neutral-800 hover:-translate-y-1 transition-all duration-300 text-center shadow-2xl shadow-black/10 tracking-wide"
+              className="w-full sm:w-auto mx-6 md:mx-0 px-10 py-4 bg-black text-white rounded-full font-medium text-lg hover:bg-neutral-800 hover:-translate-y-1 transition-all duration-300 text-center shadow-2xl shadow-black/10 tracking-wide"
             >
               Escucha mi trabajo
             </a>

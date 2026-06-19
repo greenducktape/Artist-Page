@@ -1,5 +1,5 @@
 import { motion, AnimatePresence } from 'motion/react';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 type SpotifyMedia = {
   id: string;
@@ -47,6 +47,86 @@ const spotifyMediaList: SpotifyMedia[] = [
   { id: "5iyHPsD0eppZKEqNvHlUH9", type: "album", role: "artista" },
   { id: "6LF1ouRLUWMStTrOALLwiT", type: "album", role: "artista" }
 ];
+
+// Singleton to manage standard interactions across all Spotify players
+let spotifyIframeApiPromise: Promise<any> | null = null;
+const globalSpotifyControllers = new Set<any>();
+
+function SpotifyPlayer({ item }: { item: SpotifyMedia }) {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    let currentController: any = null;
+    let isMounted = true;
+
+    if (!spotifyIframeApiPromise) {
+      spotifyIframeApiPromise = new Promise((resolve) => {
+        const existingScript = document.getElementById('spotify-iframe-api');
+        if (!existingScript) {
+          const script = document.createElement('script');
+          script.id = 'spotify-iframe-api';
+          script.src = 'https://open.spotify.com/embed/iframe-api/v1';
+          script.async = true;
+          document.body.appendChild(script);
+        }
+        (window as any).onSpotifyIframeApiReady = (IFrameAPI: any) => {
+          resolve(IFrameAPI);
+        };
+      });
+    }
+
+    spotifyIframeApiPromise.then((IFrameAPI) => {
+      if (!isMounted || !containerRef.current) return;
+      
+      // Ensure the container is empty (prevents duplicates in StrictMode)
+      containerRef.current.innerHTML = '';
+      const embedContainer = document.createElement('div');
+      containerRef.current.appendChild(embedContainer);
+
+      IFrameAPI.createController(embedContainer, {
+        uri: `spotify:${item.type}:${item.id}`,
+        width: '100%',
+        height: '152',
+        theme: '0'
+      }, (controller: any) => {
+        if (!isMounted) {
+          controller.destroy();
+          return;
+        }
+        currentController = controller;
+        globalSpotifyControllers.add(controller);
+
+        controller.addListener('playback_update', (e: any) => {
+          if (!e.data.isPaused && !e.data.isBuffering) {
+            // When this player starts playing, pause all other controllers
+            globalSpotifyControllers.forEach((c) => {
+              if (c !== controller) {
+                c.pause();
+              }
+            });
+          }
+        });
+      });
+    });
+
+    return () => {
+      isMounted = false;
+      if (currentController) {
+        globalSpotifyControllers.delete(currentController);
+        try {
+          currentController.destroy();
+        } catch (e) {
+          // ignore
+        }
+      }
+      if (containerRef.current) {
+        containerRef.current.innerHTML = '';
+      }
+    };
+  }, [item.id, item.type]);
+
+  return <div ref={containerRef} className="w-full rounded-2xl overflow-hidden [&>iframe]:rounded-2xl shadow-sm" />;
+}
 
 export default function Portfolio() {
   const [filter, setFilter] = useState<'todos' | 'artista' | 'productor'>('todos');
@@ -125,18 +205,7 @@ export default function Portfolio() {
                 key={item.id + item.role}
                 className="w-full relative hover:-translate-y-1 transition-transform duration-300"
               >
-                <iframe
-                  style={{ borderRadius: '16px' }}
-                  src={`https://open.spotify.com/embed/${item.type}/${item.id}?utm_source=generator&theme=0`}
-                  width="100%"
-                  height="152"
-                  frameBorder="0"
-                  allowFullScreen
-                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                  loading="lazy"
-                  title={`Spotify embed ${index}`}
-                  className="w-full"
-                ></iframe>
+                <SpotifyPlayer item={item} />
               </motion.div>
             ))}
           </AnimatePresence>
